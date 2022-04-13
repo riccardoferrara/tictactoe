@@ -27,6 +27,12 @@ class Board extends React.Component {
     //this function save the value of each square in the square state
     handleClick(i) {
         const squares = this.state.squares.slice()
+
+        // if we have a winner or the cliccked square is already fill => do nothing
+        if (this.state.squares[i] || calculateWinner(this.state.squares)){
+            return
+        }
+
         squares[i] = this.state.xIsNext ? 'X' : 'O'
         const xIsNext = !this.state.xIsNext //when there is a click, next turn is 'O' (not 'X' anymore)
         this.setState({
@@ -47,9 +53,10 @@ class Board extends React.Component {
 
     //render the board
     render() {
-        
         const winner = calculateWinner(this.state.squares)
         let status
+
+        //if we have a winner lets show it otherwise show next turn
         if (winner) {
             status = 'Winner: ' + winner
         } else {
