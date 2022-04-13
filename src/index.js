@@ -19,16 +19,19 @@ class Board extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            squares: Array(9).fill(null) 
+            squares: Array(9).fill(null),
+            xIsNext: true
         }
     }
 
     //this function save the value of each square in the square state
     handleClick(i) {
         const squares = this.state.squares.slice()
-        squares[i] = 'X'
+        squares[i] = this.state.xIsNext ? 'X' : 'O'
+        const xIsNext = !this.state.xIsNext //when there is a click, next turn is 'O' (not 'X' anymore)
         this.setState({
-            squares: squares
+            squares: squares,
+            xIsNext: xIsNext
         })
     }
 
