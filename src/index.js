@@ -35,6 +35,7 @@ class Board extends React.Component {
         })
     }
 
+    // function rendering i-square with the value inside
     renderSquare(i) {
         return (
             <Square
@@ -44,6 +45,7 @@ class Board extends React.Component {
         )
     }
 
+    //render the board
     render() {
         const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O')
 
