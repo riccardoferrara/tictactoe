@@ -6,7 +6,9 @@ import './index.css';
 class Square extends React.Component {
     render() {
         return ( 
-            <button className = "square" > { /* TODO */ } </button>
+            <button className = "square" > 
+            { this.props.value } 
+            </button>
         );
     }
 }
@@ -14,7 +16,7 @@ class Square extends React.Component {
 // this component is the board containing the 9 squares
 class Board extends React.Component {
     renderSquare(i) {
-        return <Square/> ;
+        return <Square value={i}/> ;
     }
 
     render() {
