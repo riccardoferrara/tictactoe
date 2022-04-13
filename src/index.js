@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+// this component is one of the 9 squares in a board
 class Square extends React.Component {
     render() {
         return ( 
@@ -10,9 +11,10 @@ class Square extends React.Component {
     }
 }
 
+// this component is the board containing the 9 squares
 class Board extends React.Component {
     renderSquare(i) {
-        return <Square / > ;
+        return <Square/> ;
     }
 
     render() {
@@ -29,6 +31,7 @@ class Board extends React.Component {
     }
 }
 
+// this component will be used to initialise a match 
 class Game extends React.Component {
     render() {
         return ( 
