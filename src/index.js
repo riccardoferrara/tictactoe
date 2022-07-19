@@ -4,29 +4,33 @@ import './index.css';
 
 class Square extends React.Component {
     render() {
-        return ( <button className = "square" > { /* TODO */ } </button>
+        console.log(this.props.value)
+        return ( 
+        <button className = "square" >
+        { this.props.value }
+        </button>
         );
     }
 }
 
 class Board extends React.Component {
-    renderRow(l){
+    renderRow(i){
         return(
             <div>
-                {this.renderSquare(1)}
-                {this.renderSquare(2)}
-                {this.renderSquare(3)}
-                {this.renderSquare(4)}
-                {this.renderSquare(5)}
-                {this.renderSquare(6)}
-                {this.renderSquare(7)}
-                {this.renderSquare(8)}
+                {this.renderSquare('a', i)}
+                {this.renderSquare('b', i)}
+                {this.renderSquare('c', i)}
+                {this.renderSquare('d', i)}
+                {this.renderSquare('e', i)}
+                {this.renderSquare('f', i)}
+                {this.renderSquare('g', i)}
+                {this.renderSquare('h', i)}
             </div>
         )            
     }
 
-    renderSquare(i) {
-        return <Square / >;
+    renderSquare(l, i) {
+        return <Square value = {l+i}/ >;
     }  
 
     render() {
@@ -35,14 +39,14 @@ class Board extends React.Component {
         return ( 
             <div >
                 <div className = "status" > { status } </div> 
-                <div className = "board-row" > { this.renderRow('a') }</div>
-                <div className = "board-row" > { this.renderRow('b') }</div>
-                <div className = "board-row" > { this.renderRow('c') }</div>
-                <div className = "board-row" > { this.renderRow('d') }</div>
-                <div className = "board-row" > { this.renderRow('e') }</div>
-                <div className = "board-row" > { this.renderRow('f') }</div>
-                <div className = "board-row" > { this.renderRow('g') }</div>
-                <div className = "board-row" > { this.renderRow('h') }</div>
+                <div className = "board-row" > { this.renderRow(8) }</div>
+                <div className = "board-row" > { this.renderRow(7) }</div>
+                <div className = "board-row" > { this.renderRow(6) }</div>
+                <div className = "board-row" > { this.renderRow(5) }</div>
+                <div className = "board-row" > { this.renderRow(4) }</div>
+                <div className = "board-row" > { this.renderRow(3) }</div>
+                <div className = "board-row" > { this.renderRow(2) }</div>
+                <div className = "board-row" > { this.renderRow(1) }</div>
             </div> 
         );
     }
