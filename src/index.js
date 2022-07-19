@@ -36,7 +36,8 @@ class Board extends React.Component {
 
         // we are using solution B
         this.state = {
-            squares: B
+            squares: B,
+            blackIsNext: true
         }
     }
 
@@ -59,9 +60,11 @@ class Board extends React.Component {
     // this function saves the value of each square in the square state
     handleClick(l, i) {
         const squares = this.state.squares
-        squares[l][i] = 'X'
+        squares[l][i] = this.state.blackIsNext ? 'B' : 'W'
+        const blackIsNext = !this.state.blackIsNext
         this.setState({
-            squares: squares
+            squares: squares,
+            blackIsNext: blackIsNext
         })
     }
 
@@ -78,7 +81,8 @@ class Board extends React.Component {
     }  
 
     render() {
-        const status = 'Next player: black';
+        const nextPlayer = this.state.blackIsNext? 'black' : 'white'
+        const status = 'Current player: ' + nextPlayer;
 
         // render the 8 rows
         return ( 
