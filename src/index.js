@@ -21,6 +21,14 @@ function Square(props){
     );
 }
 
+function intializeGame(squares){
+    squares['d'][4] = 'B'
+    squares['e'][5] = 'B'
+    squares['d'][5] = 'W'
+    squares['e'][4] = 'W'
+    return squares
+}
+
 class Board extends React.Component {
     constructor(props){
         super(props)
@@ -36,6 +44,7 @@ class Board extends React.Component {
         let B = {}
         let b = ['a','b','c','d','e','f','g','h']
         b.forEach(e => B[e] = Array(8).fill(null))
+        B = intializeGame(B)
 
         // we are using solution B
         this.state = {
