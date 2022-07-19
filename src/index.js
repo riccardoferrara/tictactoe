@@ -23,6 +23,15 @@ class Square extends React.Component {
 }
 
 class Board extends React.Component {
+    constructor(props){
+        super(props)
+        // this state contains all of the squares of the board
+        this.state = {
+            squares: Array(64).fill(null)
+        }
+    }
+
+    // render each row of the board (rendering the 8 squares inside)
     renderRow(i){
         return(
             <div>
@@ -38,13 +47,22 @@ class Board extends React.Component {
         )            
     }
 
+    // render each square, also gives the position with the chess naming l,i ex: d8
     renderSquare(l, i) {
-        return <Square position = {l+i}/ >;
+        return (
+            <Square
+                position = { l + i }
+                value = { this.state.squares[i] }
+                onClick = { () => {this.handleClick(i)} }
+            />
+        )
+        
     }  
 
     render() {
         const status = 'Next player: black';
 
+        // render the 8 rows
         return ( 
             <div >
                 <div className = "status" > { status } </div> 
