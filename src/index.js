@@ -3,19 +3,22 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 function Square(props){
-
-        return ( 
-            <button 
-                className = "square" 
-                onClick = { () => {
-                        props.onClick()
-                        console.log('user clicks on ' + props.position ) 
-                    }
-                } 
-            >
-                { props.value }
-            </button>
-        );
+    console.log('props value: ' + props.value)
+    let marker_class
+    if (props.value === 'B'){marker_class = 'marker black_bg'}
+    if (props.value === 'W'){marker_class = 'marker white_bg'}
+    return ( 
+        <button 
+            className = "square" 
+            onClick = { () => {
+                    props.onClick()
+                    console.log('user clicks on ' + props.position ) 
+                }
+            } 
+        >
+            <div class={marker_class}></div>
+        </button>
+    );
 }
 
 class Board extends React.Component {
