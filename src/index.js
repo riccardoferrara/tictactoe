@@ -3,20 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 class Square extends React.Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            value: null
-        }
-    }
+
     render() {
         return ( 
-            <button className = "square" onClick={ () => {
-                this.setState({value: 'X'})
-                console.log('user clicks on ' + this.props.position ) 
-                }
-                } >
-                { this.state.value }
+            <button 
+                className = "square" 
+                onClick = { () => {
+                        this.props.onClick()
+                        console.log('user clicks on ' + this.props.position ) 
+                    }
+                } 
+            >
+                { this.props.value }
             </button>
         );
     }
@@ -26,8 +24,21 @@ class Board extends React.Component {
     constructor(props){
         super(props)
         // this state contains all of the squares of the board
+        //----------------------------------
+        // we will use the solution A or B:
+        //----------------------------------
+
+        // solution A -> list: 8 elements of 8 elements [[null, null, ...], [null, null, ...]]
+        let A = Array(8).fill(null).map(e=>Array(8).fill(null))
+
+        // solution B -> obj: {a: [null, null, ...], b: [null, null, ...]}
+        let B = {}
+        let b = ['a','b','c','d','e','f','g','h']
+        b.forEach(e => B[e] = Array(8).fill(null))
+
+        // we are using solution B
         this.state = {
-            squares: Array(64).fill(null)
+            squares: B
         }
     }
 
@@ -47,13 +58,22 @@ class Board extends React.Component {
         )            
     }
 
+    // this function saves the value of each square in the square state
+    handleClick(l, i) {
+        const squares = this.state.squares
+        squares[l][i] = 'X'
+        this.setState({
+            squares: squares
+        })
+    }
+
     // render each square, also gives the position with the chess naming l,i ex: d8
     renderSquare(l, i) {
         return (
             <Square
                 position = { l + i }
-                value = { this.state.squares[i] }
-                onClick = { () => {this.handleClick(i)} }
+                value = { this.state.squares[l][i] }
+                onClick = { () => {this.handleClick(l, i)} }
             />
         )
         
