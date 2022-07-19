@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import {tt, bb, ll, rr, tr, bl, tl, br, intializeGame} from './pawns';
+
 
 function Square(props){
-    console.log('props value: ' + props.value)
+    // console.log('props value: ' + props.value)
     let marker_class
     if (props.value === 'B'){marker_class = 'marker black_bg'}
     if (props.value === 'W'){marker_class = 'marker white_bg'}
@@ -16,17 +18,9 @@ function Square(props){
                 }
             } 
         >
-            <div class={marker_class}></div>
+            <div className = {marker_class} > </div>
         </button>
     );
-}
-
-function intializeGame(squares){
-    squares['d'][4] = 'B'
-    squares['e'][5] = 'B'
-    squares['d'][5] = 'W'
-    squares['e'][4] = 'W'
-    return squares
 }
 
 class Board extends React.Component {
@@ -37,8 +31,8 @@ class Board extends React.Component {
         // we will use the solution A or B:
         //----------------------------------
 
-        // solution A -> list: 8 elements of 8 elements [[null, null, ...], [null, null, ...]]
-        let A = Array(8).fill(null).map(e=>Array(8).fill(null))
+        // // solution A -> list: 8 elements of 8 elements [[null, null, ...], [null, null, ...]]
+        // let A = Array(8).fill(null).map(e=>Array(8).fill(null))
 
         // solution B -> obj: {a: [null, null, ...], b: [null, null, ...]}
         let B = {}
@@ -68,6 +62,8 @@ class Board extends React.Component {
             </div>
         )            
     }
+
+    
 
     // this function saves the value of each square in the square state
     handleClick(l, i) {
