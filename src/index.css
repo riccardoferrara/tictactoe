@@ -49,3 +49,17 @@ ul {
 .game-info {
     margin-left: 20px;
 }
+
+.marker{
+    border-radius: 50%;
+    height: 95%;
+    width: 95%;
+    border: solid 1px black;
+}
+
+.black_bg{
+    background-color: black;
+}
+.white_bg{
+    background-color: white;
+}
